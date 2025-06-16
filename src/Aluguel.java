@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Aluguel {
 
     public static void menu(CadastroCliente cCliente, CadastroEquipamento cEquipamento){
-         Scanner cin = new Scanner(System.in);
-
+        Scanner cin = new Scanner(System.in);
+        
         // Equipamento equipamento = new Equipamento(0, null, null, 0, 0);
         int option;
 
@@ -55,18 +55,19 @@ public class Aluguel {
                     break;
                 case 4:
                     // Incluir Equipamento
-                    System.out.println("Digite a matricula do cliente que deseja o equipamento: ");
-                    int matriculaCliente = cin.nextInt();
-                    for(int i = 0; i < cCliente.cArr.length; i++)
-                        {
-                            if(cCliente.cArr[i].getMatricula() == matriculaCliente)
-                            {
-                                cEquipamento.addEquipamento();
-                            }
-                            else{
-                                System.out.println("Não existe um cadastro com a matriculada inserida");
-                            }
+                    for (int i = 0; i < cEquipamento.eArr.length; i++) {
+                        if (cEquipamento.eArr[i] == null) {
+                            cEquipamento.eArr[i] = cEquipamento.addEquipamento(i + 1);
+                            System.out.println("Equipamento adicionado com sucesso na pos " + i);
+                            System.out.println("Equipamento:" + cEquipamento.eArr[i].getNome());
+                            System.out.println();
+                        
+                            break;
                         }
+                        else if (i == cEquipamento.eArr.length - 1) {
+                            System.out.println("Não há mais espaço para adicionar equipamentos.");
+                        }
+                    }
                     break;
                 case 5:
                     // Mostrar equipamentos
@@ -74,10 +75,11 @@ public class Aluguel {
                     break;
                 case 6:
                     // Pesquisar equipamento por nome
-                    // nao ta funcionando
                     cEquipamento.buscaEquipPeloNome();
                     break;
                 case 7:
+
+                    // arrumar
                     
                     // Retirar equipamento
                     break;
@@ -93,6 +95,10 @@ public class Aluguel {
                     break;
                 case 10:
                     // Inovaçao
+                    break;
+                case 11:
+                    // Sair
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
                     System.out.println("Por favor digite uma opção válida.");

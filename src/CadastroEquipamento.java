@@ -7,7 +7,7 @@ public class CadastroEquipamento {
     public CadastroEquipamento(){
         eArr = new Equipamento[10];
 
-        eArr[0] = new Equipamento(1, "Barra Olímpica", "barra", 5, 100.0);
+        eArr[0] = new Equipamento(1, "Barra Olimpica", "barra", 5, 100.0);
         eArr[1] = new Equipamento(2, "Kettlebell 16kg", "kettlebell", 10, 500.0);
         eArr[2] = new Equipamento(3, "Corda Naval", "corda naval", 8, 30.0);
         eArr[3] = new Equipamento(4, "Barra de Levantamento", "barra", 4, 120.0);
@@ -15,20 +15,20 @@ public class CadastroEquipamento {
         eArr[5] = new Equipamento(6, "Corda de Pular", "corda naval", 12, 25.0);
     }
 
-    public Equipamento addEquipamento() {
+    public Equipamento addEquipamento(int codigoEquipamento) {
         CadastroEquipamento cEquipamento = new CadastroEquipamento();
-        int codigoEquipamento = 0; // Corrigido: instanciar Random
+        //int codigoEquipamento = 0; // Corrigido: instanciar Random
         System.out.print("Insira o nome do equipamento: ");
-        String nomeEquipamento = teclado.next();
+        String nomeEquipamento = teclado.nextLine();
         System.out.println();
         System.out.print("Insira o Tipo do equipamento: ");
-        String tipoEquipamento = teclado.next();
+        String tipoEquipamento = teclado.nextLine();
         System.out.println();
         System.out.print("Insira a quantidade disponivel deste equipamento: ");
         int quantDispLocacao = teclado.nextInt();
         System.out.print("Insira o valor base da locação: ");
         double valorBaseLocacao = teclado.nextDouble();
-        System.out.print("Insira a quantidade disponivel deste equipamento: ");
+       // System.out.print("Insira a quantidade disponivel deste equipamento: ");
         
 
         //Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado pelo código
@@ -47,22 +47,18 @@ public class CadastroEquipamento {
         }
     }
 
-    public Equipamento buscaEquipPeloNome(){
+    public Equipamento buscaEquipPeloNome() {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Insira o nome do equipamento: ");
-        String nome = teclado.next();
-        for(int i = 0; i < eArr.length; i++)
-        {
-            if(eArr[i].getNome().equalsIgnoreCase(nome)) {
+        String nome = teclado.nextLine();
+        for (int i = 0; i < eArr.length; i++) {
+            if (eArr[i] != null && eArr[i].getNome().equalsIgnoreCase(nome)) {
+                System.out.println("Equipamento encontrado: " + eArr[i].toString());
                 return eArr[i];
             }
-            else {
-                System.out.println("Este equipamento nao existe.");
-                return null;
-                
-            }
-        }    
-        return null;    
+        }
+        System.out.println("Este equipamento nao existe.");
+        return null;
     }
 
     public Equipamento buscaEquipPeloCodigo(int codigo) {
@@ -74,7 +70,7 @@ public class CadastroEquipamento {
                 System.out.println("Este equipamento nao existe.");
             }
         }
-        return null; // Retorna null se não encontrar o equipamento
+        return null; // se nao encontrar retorna null
     }
 
 

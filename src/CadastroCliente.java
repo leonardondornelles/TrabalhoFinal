@@ -27,10 +27,10 @@ public class CadastroCliente {
         CadastroEquipamento cEquipamento = new CadastroEquipamento();
         int matriculaCliente = new Random().nextInt(10000); // Corrigido: instanciar Random
         System.out.print("Insira o nome do cliente: ");
-        String nomeCliente = teclado.next();
+        String nomeCliente = teclado.nextLine();
         System.out.println();
         System.out.print("Insira a academia do cliente: ");
-        String academiaCliente = teclado.next();
+        String academiaCliente = teclado.nextLine();
         System.out.println();
         System.out.print("Insira o Codigo do Equipamento Alugado/Vendido: ");
         int codigoEquipamento = teclado.nextInt();
@@ -46,11 +46,15 @@ public class CadastroCliente {
     public String buscarClientePeloNome() {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Insira o nome do cliente: ");
-        String nomeCliente = teclado.next();
+        String nomeCliente = teclado.nextLine();
 
         for (int i = 0; i < cArr.length; i++) {
-            if (cArr[i].getNome().equalsIgnoreCase(nomeCliente)) {
-                return cArr[i].toString();
+            if (cArr[i] != null && cArr[i].getNome().equalsIgnoreCase(nomeCliente)) {
+                System.out.println("Cliente encontrado: " + cArr[i].toString());
+                //return cArr[i].toString();
+            }
+            else if (cArr[i] == null) {
+                continue; // Se o cliente não existir, continua para o próximo
             }
         }
         System.out.println("Cliente não encontrado.");
