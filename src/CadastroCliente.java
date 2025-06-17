@@ -26,14 +26,17 @@ public class CadastroCliente {
     public Cliente addCliente(){
         CadastroEquipamento cEquipamento = new CadastroEquipamento();
         int matriculaCliente = new Random().nextInt(10000); // Corrigido: instanciar Random
+        
         System.out.print("Insira o nome do cliente: ");
         String nomeCliente = teclado.nextLine();
+        System.out.println("{"+ nomeCliente +"}");
         System.out.println();
         System.out.print("Insira a academia do cliente: ");
         String academiaCliente = teclado.nextLine();
         System.out.println();
         System.out.print("Insira o Codigo do Equipamento Alugado/Vendido: ");
         int codigoEquipamento = teclado.nextInt();
+        teclado.nextLine();
 
         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado pelo código
         //cEquipamento.removeEquipamento(codigoEquipamento); // Remove o equipamento do estoque

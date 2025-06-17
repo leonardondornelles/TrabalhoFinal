@@ -29,7 +29,7 @@ public class Aluguel {
             switch (option) {
                 case 1:
                     // Incluir cliente
-                for (int i = 0; i < cCliente.cArr.length; i++) {
+                    for (int i = 0; i < cCliente.cArr.length; i++) {
                         if (cCliente.cArr[i] == null) {
                             cCliente.cArr[i] = cCliente.addCliente();
                             System.out.println("Cliente adicionado com sucesso na pos " + i);
