@@ -70,7 +70,8 @@ public class CadastroCliente {
         for (int i = 0; i < cArr.length; i++) {
             if (cArr[i] != null) {
                 countClientes++;
-                System.out.println(i + " - " + cArr[i].getNome());
+                System.out.println(i + " - " + cArr[i].toString());
+                System.out.println("---------------------------");
             }
         }
         if(countClientes == 0)
