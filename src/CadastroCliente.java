@@ -39,6 +39,18 @@ public class CadastroCliente {
         teclado.nextLine();
 
         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado pelo código
+        if(equipamento != null) // verifica se o código do equipamento existe
+        {
+            if(equipamento.getQuantDispLocacao() > 1) // Verifica se ainda há uma quantidade disponível no estoque
+            {
+                System.out.println("Quantidade disponível para locação "+equipamento.getQuantDispLocacao()); // Printa a quantidade
+                System.out.print("Quantos equipamentos você deseja alugar?");
+                equipamento.retirar();
+            }
+            else{
+                System.out.println("O equipamento desejado está fora de estoque.");
+            }
+        }
         //cEquipamento.removeEquipamento(codigoEquipamento); // Remove o equipamento do estoque
 
         return new Cliente(matriculaCliente, nomeCliente, academiaCliente, equipamento);

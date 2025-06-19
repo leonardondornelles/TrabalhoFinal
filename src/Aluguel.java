@@ -1,5 +1,14 @@
 import java.util.Scanner;
 
+
+// Tá dando erro quando tu bota um codigo invalido no incluir cliente, ele só mostra o erro depois que tu tenta mostrar os clientes cadastrados
+
+
+
+
+
+
+
 public class Aluguel {
 
     public static void menu(CadastroCliente cCliente, CadastroEquipamento cEquipamento){

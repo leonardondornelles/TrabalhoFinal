@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Equipamento {
     private int codigo;
     private String nome;
@@ -6,6 +8,8 @@ public class Equipamento {
     private double valorBaseLocacao;
     private double valorAluguel; // por 1 semana, 15 dias ou 1 mês (com 5% de desconto para 15 dias e 10% para 1 mês)
     private boolean seguro; // se for contratado, acrescenta 2% ao valor total
+
+    Scanner teclado = new Scanner(System.in);
 
     public Equipamento(int codigo, String nome, String tipo, int quantDispLocacao, double valorBaseLocacao)
     {
@@ -74,7 +78,27 @@ public class Equipamento {
                 + " | Quantidade Disponível: " + quantDispLocacao + " | Valor base locação: " + valorBaseLocacao + " } ";
     }
 
-    public void retirar() {
+//!!!!!!!
+// Comentei o outro retirar que a gente tinha, basicamente eu mudei o incluir cliente (coloquei pra ele retirar do nosso estoque a quantidade desejada pelo cliente). Só que pra fazer isso eu precisava colocar como 
+// parâmentro a quantidade desejada, que no nosso antigo método retirar não tinha, enfim... Olha ai o novo método e vê oq tu acha
+//
+
+
+    public void retirar()
+    {
+        int qntDesejada = teclado.nextInt(); // Salva em uma váriavel a quantidade desejada pelo cliente
+        while (quantDispLocacao < qntDesejada) {
+            System.out.println();
+            System.out.println("A quantidade desejada excede a quantia do estoque. Quantidade Disponível para locação do equipamento: " +quantDispLocacao);
+            System.out.print("Digite uma nova quantidade desejada: ");
+            qntDesejada = teclado.nextInt(); // Solicita nova quantidade
+        }
+            quantDispLocacao = quantDispLocacao - qntDesejada;
+            System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
+        }
+
+
+   /*  public void retirar() {
         if(quantDispLocacao > 0) {
             quantDispLocacao--;
             System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
@@ -82,6 +106,7 @@ public class Equipamento {
             System.out.println("Estamos sem estoque deste equipamento");
         }
     }
+*/
 
     public void devolver() {
         quantDispLocacao++;
