@@ -86,6 +86,7 @@ public class Equipamento {
 
     public void retirar()
     {
+        System.out.println("Quanto deseja retirar do estoque? (Quantidade Disponível para locação do equipamento: " + quantDispLocacao + ")");
         int qntDesejada = teclado.nextInt(); // Salva em uma váriavel a quantidade desejada pelo cliente
         while (quantDispLocacao < qntDesejada) {
             System.out.println();

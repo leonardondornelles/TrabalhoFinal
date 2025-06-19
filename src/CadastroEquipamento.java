@@ -64,7 +64,7 @@ public class CadastroEquipamento {
     public Equipamento buscaEquipPeloCodigo(int codigo) {
         for (int i = 0; i < eArr.length; i++) {
             if (eArr[i] != null && eArr[i].getCodigo() == codigo) {
-                System.out.println("EQUIPAMENTO DE CODIGO "+codigo); // DEBUG ||| o equipamento tá sendo achado, só que quando é um número maior que 1 ele printa que não existe o equipamento
+                // System.out.println("EQUIPAMENTO DE CODIGO "+codigo); // DEBUG ||| o equipamento tá sendo achado, só que quando é um número maior que 1 ele printa que não existe o equipamento
                 return eArr[i];
             }
             else {

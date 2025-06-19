@@ -41,8 +41,8 @@ public class Aluguel {
                     for (int i = 0; i < cCliente.cArr.length; i++) {
                         if (cCliente.cArr[i] == null) {
                             cCliente.cArr[i] = cCliente.addCliente();
-                            System.out.println("Cliente adicionado com sucesso na pos " + i);
-                            System.out.println("Cliente:" + cCliente.cArr[i].getNome());
+                            //System.out.println("Cliente adicionado com sucesso na pos " + i);
+                            System.out.println("Cliente: " + cCliente.cArr[i].toString() + " Adicionado com sucesso na posição " + i);
                             System.out.println();
                         
                             break;
@@ -89,13 +89,63 @@ public class Aluguel {
                 case 7:
 
                     // arrumar
-                    
-                    // Retirar equipamento
+                    System.out.println("Deseja retirar o Equipamento por código ou por nome? (1 - Código, 2 - Nome)");
+                    int escolha = cin.nextInt();
+                    cin.nextLine(); // Limpa o buffer do teclado
+
+                    if (escolha == 1) {
+                        System.out.print("Insira o código do equipamento que deseja retirar: ");
+                        int codigoEquipamento = cin.nextInt();
+                        //cin.nextLine(); // Limpa o buffer do teclado
+                        // Verifica se o código do equipamento existe
+                        Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento);
+                        if (equipamento != null) {
+                            equipamento.retirar();
+                            System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
+                        }
+                        else {
+                            System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
+                        }
+
+                        // Retirar equipamento
+                    } else if (escolha == 2) {
+
+                        Equipamento equipamento = cEquipamento.buscaEquipPeloNome();
+                        if (equipamento != null) {
+                            equipamento.retirar();
+                            System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
+                        }
+                        // Retirar equipamento
+                    }
                     break;
                 case 8:
 
                     // equipamento.devolver();
-                    
+                    System.out.println("Deseja devolver o Equipamento por código ou por nome? (1 - Código, 2 - Nome)");
+                    escolha = cin.nextInt();
+                    cin.nextLine(); // Limpa o buffer do teclado
+                    if (escolha == 1) {
+                        System.out.print("Insira o código do equipamento que deseja devolver: ");
+                        int codigoEquipamento = cin.nextInt();
+                        //cin.nextLine(); // Limpa o buffer do teclado
+                        // Verifica se o código do equipamento existe
+                        Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento);
+                        if (equipamento != null) {
+                            equipamento.devolver();
+                            System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
+                        }
+                        else {
+                            System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
+                        }
+
+                    } else if (escolha == 2) {
+
+                        Equipamento equipamento = cEquipamento.buscaEquipPeloNome();
+                        if (equipamento != null) {
+                            equipamento.devolver();
+                            System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
+                        }
+                    }
                     // Devolver equipamento
                     break;
                 case 9:

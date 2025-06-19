@@ -29,13 +29,25 @@ public class CadastroCliente {
         
         System.out.print("Insira o nome do cliente: ");
         String nomeCliente = teclado.nextLine();
-        System.out.println("{"+ nomeCliente +"}");
+        //System.out.println("{"+ nomeCliente +"}");  // debugging
         System.out.println();
         System.out.print("Insira a academia do cliente: ");
         String academiaCliente = teclado.nextLine();
         System.out.println();
-        System.out.print("Insira o Codigo do Equipamento Alugado/Vendido: ");
+        System.out.print("Insira o Codigo do Equipamento Alugado: ");
         int codigoEquipamento = teclado.nextInt();
+
+        for (int i = 0; i < cEquipamento.eArr.length; i ++) {
+            if (cEquipamento.buscaEquipPeloCodigo(codigoEquipamento) == null) {
+                System.out.println("Equipamento não encontrado. Tente novamente.");
+                System.out.print("Insira o Codigo do Equipamento Alugado: ");
+                codigoEquipamento = teclado.nextInt();
+            }
+            else{
+                break; // Se o equipamento foi encontrado, sai do loop
+            }
+        }
+        
         teclado.nextLine();
 
         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado pelo código
@@ -46,6 +58,13 @@ public class CadastroCliente {
                 System.out.println("Quantidade disponível para locação "+equipamento.getQuantDispLocacao()); // Printa a quantidade
                 System.out.print("Quantos equipamentos você deseja alugar?");
                 equipamento.retirar();
+
+                System.out.print("Quantos dias você deseja alugar o equipamento? ");
+                int dias = teclado.nextInt();
+                teclado.nextLine(); // Limpa o buffer do teclado
+                System.out.print("Você deseja adicionar seguro? (true/false): ");
+                boolean seguro = teclado.nextBoolean();
+                System.out.println("Equipamento alugado com sucesso, o Valor total ficou R$ " + equipamento.calcValorLocacao(dias, seguro));
             }
             else{
                 System.out.println("O equipamento desejado está fora de estoque.");
