@@ -9,17 +9,21 @@ public class Equipamento {
     private double valorAluguel; // por 1 semana, 15 dias ou 1 mês (com 5% de desconto para 15 dias e 10% para 1
                                  // mês)
     private boolean seguro; // se for contratado, acrescenta 2% ao valor total
+    private int countTotal;
 
     Scanner teclado = new Scanner(System.in);
 
-    public Equipamento(int codigo, String nome, String tipo, int quantDispLocacao, double valorBaseLocacao) {
+    public Equipamento(int codigo, String nome, String tipo, int quantDispLocacao, double valorBaseLocacao, int countTotal) {
         this.codigo = codigo;
         this.nome = nome;
         this.tipo = tipo;
         this.quantDispLocacao = quantDispLocacao;
         this.valorBaseLocacao = valorBaseLocacao;
+        this.countTotal = countTotal;
         // this.valorAluguel = valorAluguel;
     }
+
+    // --- GETS
 
     public int getCodigo() {
         return codigo;
@@ -45,6 +49,12 @@ public class Equipamento {
         return valorAluguel;
     }
 
+    public int getCountTotal() {
+        return countTotal;
+    }
+
+    // -- SETS
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
@@ -69,10 +79,14 @@ public class Equipamento {
         this.valorAluguel = valorAluguel;
     }
 
+    public void setCountTotal(int countTotal) {
+        this.countTotal = countTotal;
+    }
+
     public String toString() {
         return "Equipamento { Código: " + codigo + " | Nome: " + nome + " | Tipo: " + tipo
                 + " | Quantidade Disponível: " + quantDispLocacao + " | Valor base locação: " + valorBaseLocacao
-                + " } ";
+                + " | Quantidade Alugada: " + countTotal + " } ";
     }
 
     // !!!!!!!
