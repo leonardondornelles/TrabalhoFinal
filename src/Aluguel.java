@@ -20,7 +20,7 @@ public class Aluguel {
             System.out.println("7 - Retirar Equipamento");
             System.out.println("8 - Devolver Equipamento");
             System.out.println("9 - Mostrar quantidade total de equipamentos disponíveis");
-            System.out.println("10 - ???????");
+            System.out.println("10 - Equipamento com maior demanda");
             System.out.println("11 - Sair");
             System.out.println();
             System.out.print("Digite a opção desejada: ");
@@ -114,7 +114,7 @@ public class Aluguel {
                     }
                     break;
                 case 8:
-
+                    // Devolver equipamento
                     // equipamento.devolver();
                     System.out.println("Deseja devolver o Equipamento por código ou por nome? (1 - Código, 2 - Nome)");
                     escolha = cin.nextInt();
@@ -140,14 +140,16 @@ public class Aluguel {
                             System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
                         }
                     }
-                    // Devolver equipamento
+                    
                     break;
                 case 9:
                     cEquipamento.totalEquipamentos();
                     // Mostrar quantidade total de equipamentos disponiveis
                     break;
                 case 10:
-                    // Inovaçao
+                    // Inovaçao - Ver o equipamento que está sendo mais alugado(mais demanda) dentre os clientes registrados
+                    // Pega a array dos clientes, analisa um por um e vê qual codigo aparece mais
+                    System.out.println();
                     break;
                 case 11:
                     // Sair
