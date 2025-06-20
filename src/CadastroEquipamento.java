@@ -7,12 +7,12 @@ public class CadastroEquipamento {
     public CadastroEquipamento(){
         eArr = new Equipamento[10];
 
-        eArr[0] = new Equipamento(1, "Barra Olimpica", "barra", 5, 100.0);
-        eArr[1] = new Equipamento(2, "Kettlebell 16kg", "kettlebell", 10, 500.0);
-        eArr[2] = new Equipamento(3, "Corda Naval", "corda naval", 8, 30.0);
-        eArr[3] = new Equipamento(4, "Barra de Levantamento", "barra", 4, 120.0);
-        eArr[4] = new Equipamento(5, "Kettlebell 24kg", "kettlebell", 6, 70.0);
-        eArr[5] = new Equipamento(6, "Corda de Pular", "corda naval", 12, 25.0);
+        eArr[0] = new Equipamento(1, "Barra Olimpica", "barra", 5, 100.0, 0);
+        eArr[1] = new Equipamento(2, "Kettlebell 16kg", "kettlebell", 10, 500.0, 0);
+        eArr[2] = new Equipamento(3, "Corda Naval", "corda naval", 8, 30.0, 0);
+        eArr[3] = new Equipamento(4, "Barra de Levantamento", "barra", 4, 120.0, 0);
+        eArr[4] = new Equipamento(5, "Kettlebell 24kg", "kettlebell", 6, 70.0, 0);
+        eArr[5] = new Equipamento(6, "Corda de Pular", "corda naval", 12, 25.0, 0);
     }
 
     public Equipamento addEquipamento(int codigoEquipamento) {
@@ -33,7 +33,7 @@ public class CadastroEquipamento {
 
         //Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado pelo código
         //cEquipamento.removeEquipamento(codigoEquipamento); // Remove o equipamento do estoque
-        return new Equipamento(codigoEquipamento, nomeEquipamento, tipoEquipamento, quantDispLocacao, valorBaseLocacao);
+        return new Equipamento(codigoEquipamento, nomeEquipamento, tipoEquipamento, quantDispLocacao, valorBaseLocacao, 0);
     }
     
 

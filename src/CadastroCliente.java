@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import org.xml.sax.ErrorHandler;
 
 public class CadastroCliente {
     // Array clientes
@@ -113,3 +114,4 @@ public class CadastroCliente {
         System.out.println("Total de clientes cadastrados: " + countClientes);
     }
 }
+
