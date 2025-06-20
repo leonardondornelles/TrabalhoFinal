@@ -1,19 +1,12 @@
 import java.util.Scanner;
 
-
 // Tá dando erro quando tu bota um codigo invalido no incluir cliente, ele só mostra o erro depois que tu tenta mostrar os clientes cadastrados
-
-
-
-
-
-
 
 public class Aluguel {
 
-    public static void menu(CadastroCliente cCliente, CadastroEquipamento cEquipamento){
+    public static void menu(CadastroCliente cCliente, CadastroEquipamento cEquipamento) {
         Scanner cin = new Scanner(System.in);
-        
+
         // Equipamento equipamento = new Equipamento(0, null, null, 0, 0);
         int option;
 
@@ -41,18 +34,18 @@ public class Aluguel {
                     for (int i = 0; i < cCliente.cArr.length; i++) {
                         if (cCliente.cArr[i] == null) {
                             cCliente.cArr[i] = cCliente.addCliente();
-                            //System.out.println("Cliente adicionado com sucesso na pos " + i);
-                            System.out.println("Cliente: " + cCliente.cArr[i].toString() + " Adicionado com sucesso na posição " + i);
+                            // System.out.println("Cliente adicionado com sucesso na pos " + i);
+                            System.out.println("Cliente: " + cCliente.cArr[i].toString()
+                                    + " Adicionado com sucesso na posição " + i);
                             System.out.println();
-                        
+
                             break;
                             // return;
-                        }
-                        else if (i == cCliente.cArr.length - 1) {
+                        } else if (i == cCliente.cArr.length - 1) {
                             System.out.println("Não há mais espaço para adicionar clientes.");
                         }
                     }
-                   // System.out.println("Não há mais espaço para adicionar clientes.");
+                    // System.out.println("Não há mais espaço para adicionar clientes.");
                     break;
                 case 2:
                     // Mostrar clientes
@@ -70,10 +63,9 @@ public class Aluguel {
                             System.out.println("Equipamento adicionado com sucesso na pos " + i);
                             System.out.println("Equipamento:" + cEquipamento.eArr[i].getNome());
                             System.out.println();
-                        
+
                             break;
-                        }
-                        else if (i == cEquipamento.eArr.length - 1) {
+                        } else if (i == cEquipamento.eArr.length - 1) {
                             System.out.println("Não há mais espaço para adicionar equipamentos.");
                         }
                     }
@@ -96,14 +88,15 @@ public class Aluguel {
                     if (escolha == 1) {
                         System.out.print("Insira o código do equipamento que deseja retirar: ");
                         int codigoEquipamento = cin.nextInt();
-                        //cin.nextLine(); // Limpa o buffer do teclado
+                        // cin.nextLine(); // Limpa o buffer do teclado
                         // Verifica se o código do equipamento existe
                         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento);
                         if (equipamento != null) {
-                            equipamento.retirar();
+                            System.out.print("Quantos equipamentos deseja retirar: ");
+                            int qntDesejada = cin.nextInt();
+                            equipamento.retirar(qntDesejada);
                             System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
-                        }
-                        else {
+                        } else {
                             System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
                         }
 
@@ -112,7 +105,9 @@ public class Aluguel {
 
                         Equipamento equipamento = cEquipamento.buscaEquipPeloNome();
                         if (equipamento != null) {
-                            equipamento.retirar();
+                            System.out.print("Quantos equipamentos deseja retirar: ");
+                            int qntDesejada = cin.nextInt();
+                            equipamento.retirar(qntDesejada);
                             System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
                         }
                         // Retirar equipamento
@@ -127,14 +122,13 @@ public class Aluguel {
                     if (escolha == 1) {
                         System.out.print("Insira o código do equipamento que deseja devolver: ");
                         int codigoEquipamento = cin.nextInt();
-                        //cin.nextLine(); // Limpa o buffer do teclado
+                        // cin.nextLine(); // Limpa o buffer do teclado
                         // Verifica se o código do equipamento existe
                         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento);
                         if (equipamento != null) {
                             equipamento.devolver();
                             System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
-                        }
-                        else {
+                        } else {
                             System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
                         }
 
@@ -167,9 +161,8 @@ public class Aluguel {
 
         // cin.close();
     }
-    
-    public static void main(String[] args)
-    {
+
+    public static void main(String[] args) {
         CadastroCliente cCliente = new CadastroCliente();
         CadastroEquipamento cEquipamento = new CadastroEquipamento();
 

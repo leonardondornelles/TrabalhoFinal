@@ -6,42 +6,38 @@ public class Equipamento {
     private String tipo; // barra, kettlebell ou corda naval
     private int quantDispLocacao;
     private double valorBaseLocacao;
-    private double valorAluguel; // por 1 semana, 15 dias ou 1 mês (com 5% de desconto para 15 dias e 10% para 1 mês)
+    private double valorAluguel; // por 1 semana, 15 dias ou 1 mês (com 5% de desconto para 15 dias e 10% para 1
+                                 // mês)
     private boolean seguro; // se for contratado, acrescenta 2% ao valor total
 
     Scanner teclado = new Scanner(System.in);
 
-    public Equipamento(int codigo, String nome, String tipo, int quantDispLocacao, double valorBaseLocacao)
-    {
+    public Equipamento(int codigo, String nome, String tipo, int quantDispLocacao, double valorBaseLocacao) {
         this.codigo = codigo;
         this.nome = nome;
         this.tipo = tipo;
         this.quantDispLocacao = quantDispLocacao;
         this.valorBaseLocacao = valorBaseLocacao;
-        //this.valorAluguel = valorAluguel;
+        // this.valorAluguel = valorAluguel;
     }
-    
-    
-    public int getCodigo()
-    {
+
+    public int getCodigo() {
         return codigo;
     }
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
-    public String getTipo(){
+    public String getTipo() {
         return tipo;
     }
 
-     public int getQuantDispLocacao()
-    {
+    public int getQuantDispLocacao() {
         return quantDispLocacao;
     }
 
-    public double getValorBaseLocacao()
-    {
+    public double getValorBaseLocacao() {
         return valorBaseLocacao;
     }
 
@@ -75,52 +71,54 @@ public class Equipamento {
 
     public String toString() {
         return "Equipamento { Código: " + codigo + " | Nome: " + nome + " | Tipo: " + tipo
-                + " | Quantidade Disponível: " + quantDispLocacao + " | Valor base locação: " + valorBaseLocacao + " } ";
+                + " | Quantidade Disponível: " + quantDispLocacao + " | Valor base locação: " + valorBaseLocacao
+                + " } ";
     }
 
-//!!!!!!!
-// Comentei o outro retirar que a gente tinha, basicamente eu mudei o incluir cliente (coloquei pra ele retirar do nosso estoque a quantidade desejada pelo cliente). Só que pra fazer isso eu precisava colocar como 
-// parâmentro a quantidade desejada, que no nosso antigo método retirar não tinha, enfim... Olha ai o novo método e vê oq tu acha
-//
+    // !!!!!!!
+    // Comentei o outro retirar que a gente tinha, basicamente eu mudei o incluir
+    // cliente (coloquei pra ele retirar do nosso estoque a quantidade desejada pelo
+    // cliente). Só que pra fazer isso eu precisava colocar como
+    // parâmentro a quantidade desejada, que no nosso antigo método retirar não
+    // tinha, enfim... Olha ai o novo método e vê oq tu acha
+    //
 
+    public void retirar(int qntDesejada) {
 
-    public void retirar()
-    {
-        System.out.println("Quanto deseja retirar do estoque? (Quantidade Disponível para locação do equipamento: " + quantDispLocacao + ")");
-        int qntDesejada = teclado.nextInt(); // Salva em uma váriavel a quantidade desejada pelo cliente
         while (quantDispLocacao < qntDesejada) {
             System.out.println();
-            System.out.println("A quantidade desejada excede a quantia do estoque. Quantidade Disponível para locação do equipamento: " +quantDispLocacao);
+            System.out.println(
+                    "A quantidade desejada excede a quantia do estoque. Quantidade Disponível para locação do equipamento: "
+                            + quantDispLocacao);
             System.out.print("Digite uma nova quantidade desejada: ");
             qntDesejada = teclado.nextInt(); // Solicita nova quantidade
         }
-            quantDispLocacao = quantDispLocacao - qntDesejada;
-            System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
-        }
-
-
-   /*  public void retirar() {
-        if(quantDispLocacao > 0) {
-            quantDispLocacao--;
-            System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
-        } else {
-            System.out.println("Estamos sem estoque deste equipamento");
-        }
+        quantDispLocacao = quantDispLocacao - qntDesejada;
+        System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
     }
-*/
+
+    /*
+     * public void retirar() {
+     * if(quantDispLocacao > 0) {
+     * quantDispLocacao--;
+     * System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
+     * } else {
+     * System.out.println("Estamos sem estoque deste equipamento");
+     * }
+     * }
+     */
 
     public void devolver() {
         quantDispLocacao++;
         System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
     }
 
-
     public double calcValorLocacao(int dias, boolean seguro) {
         double valor = valorBaseLocacao;
 
-        if (dias == 15) {
+        if (dias >= 15) {
             valor = valor * 0.95;
-        } else if (dias == 30) {
+        } else if (dias >= 30) {
             valor = valor * 0.9;
         }
 
